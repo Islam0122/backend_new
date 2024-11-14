@@ -22,9 +22,5 @@ CORS_ALLOW_HEADERS = [
     'x-requested-with',
 ]
 
-# CORS_ALLOWED_ORIGINS = env('CORS_ALLOWED_ORIGINS', cast=csv())
+# Разрешаем доступ для всех доменов
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:*",  # Разрешаем доступ с любых портов на localhost
-    "https://duishobaevislam01.up.railway.app",  # Разрешаем доступ с продакшн сервера
-]
