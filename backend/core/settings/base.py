@@ -9,7 +9,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-PRODUCTION = env("PRODUCTION", default=False, cast=bool)
+PRODUCTION = True
 
 INSTALLED_APPS = [
     'jazzmin',

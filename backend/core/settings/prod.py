@@ -4,10 +4,10 @@ from .env_reader import env
 SECRET_KEY = env('SECRET_KEY')
 
 # DEBUG
-DEBUG = env('DEBUG', default=False, cast=bool)
+DEBUG = False
 
 # ALLOWED_HOSTS
-ALLOWED_HOSTS = env('ALLOWED_HOSTS')
+ALLOWED_HOSTS = ['duishobaevislam01.up.railway.app']
 
 # Database
 DATABASES = {
