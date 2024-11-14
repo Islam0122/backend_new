@@ -28,6 +28,7 @@ INSTALLED_APPS = [
 
 # MIDDLEWARE
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # должен быть до CommonMiddleware
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',  # Добавьте сюда
     'django.contrib.sessions.middleware.SessionMiddleware',
