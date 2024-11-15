@@ -25,12 +25,14 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 # CORS_ORIGIN_ALLOW_ALL = True # Отключаем разрешение всех доменов
 CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:5500/index.html",
      "http://127.0.0.1:5500",  # порт Go Live
     "http://localhost:5500",  # если Go Live работает на localhost
     "http://localhost:63343",  # Your local frontend
         "https://duishobaevislam01.up.railway.app",  # ваш сервер на Railway
 ]
 CORS_ORIGIN_WHITELIST = [
+    "http://127.0.0.1:5500/index.html",
     "http://127.0.0.1:5500",  # порт Go Live
     "http://localhost:5500",  # если Go Live работает на localhost
     "http://localhost:63343",  # Your local frontend
