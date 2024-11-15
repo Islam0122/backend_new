@@ -22,7 +22,7 @@ CORS_ALLOW_HEADERS = [
     'x-requested-with',
 ]
 
-# CORS_ORIGIN_ALLOW_ALL = False  # Отключаем разрешение всех доменов
+CORS_ORIGIN_ALLOW_ALL = True # Отключаем разрешение всех доменов
 # CORS_ALLOWED_ORIGINS = [
 #     "http://localhost:63343",  # Your local frontend
 #     "https://duishobaevislam01.up.railway.app",  # Your backend URL
@@ -31,6 +31,5 @@ CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.1:5500",  # порт Go Live
     "http://localhost:5500",  # если Go Live работает на localhost
     "http://localhost:63343",  # Your local frontend
-
-    "https://duishobaevislam01.up.railway.app",  # ваш сервер на Railway
+        "https://duishobaevislam01.up.railway.app",  # ваш сервер на Railway
 ]
