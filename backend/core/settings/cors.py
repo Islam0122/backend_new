@@ -21,6 +21,7 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
+CORS_ALLOW_ALL_ORIGINS = True
 
 # CORS_ORIGIN_ALLOW_ALL = True # Отключаем разрешение всех доменов
 CORS_ALLOWED_ORIGINS = [
