@@ -12,21 +12,16 @@ class TalesSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         text = validated_data.get('text')
-
-        # Генерация текста сказки
-        if text:
-            generated_story = sent_prompt_and_get_response(text)
-            validated_data['text'] = generated_story
-
+        generated_story = sent_prompt_and_get_response(text)
+        validated_data['text'] = generated_story
         # Получаем пользователя из контекста
         user = self.context['request'].user
 
-        # Проверка, что пользователь аутентифицирован
+        # Для анонимных пользователей сохраняем сказку без привязки к пользователю
         if user.is_anonymous:
-            raise ValidationError("Пожалуйста, авторизуйтесь, чтобы создать сказку.")
-
-        # Присваиваем пользователя в validated_data
-        validated_data['user'] = user
+            validated_data['user'] = None  # Не привязываем пользователя, если он аноним
+        else:
+            validated_data['user'] = user  # Если пользователь авторизован, сохраняем его
 
         # Создаем объект модели
         return super().create(validated_data)

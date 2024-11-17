@@ -19,7 +19,9 @@ class Base_Tales(models.Model):
         User,
         on_delete=models.CASCADE,
         verbose_name='Пользователь',
-        help_text='Пользователь, создавший сказку.'
+        help_text='Пользователь, создавший сказку.',
+        null=True,  # Разрешаем хранить NULL в базе данных
+        blank=True  # Делает поле необязательным в формах
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
