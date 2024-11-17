@@ -9,6 +9,8 @@ class Base_Tales(models.Model):
         help_text='Укажите тему сказки.'
     )
     text = models.TextField(
+        null=True,  # Позволяет хранить NULL в базе данных
+        blank=True,  # Разрешает оставлять поле пустым в форме
         verbose_name='Текст сказки',
         help_text='Введите текст сказки, который хотите добавить.'
     )
