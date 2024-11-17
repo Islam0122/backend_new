@@ -11,6 +11,7 @@ class Base_Tales(models.Model):
     text = models.TextField(
         null=True,  # Позволяет хранить NULL в базе данных
         blank=True,  # Разрешает оставлять поле пустым в форме
+        default='текст',
         verbose_name='Текст сказки',
         help_text='Введите текст сказки, который хотите добавить.'
     )
