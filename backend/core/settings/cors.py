@@ -33,6 +33,7 @@ CORS_ALLOW_HEADERS = [
 # ]
 CORS_ORIGIN_WHITELIST = [
     # "http://127.0.0.1:5500/index.html",
+    'http://127.0.0.1:8000',
     "http://127.0.0.1:5500",  # порт Go Live
     "http://localhost:5500",  # если Go Live работает на localhost
     "http://localhost:63343",  # Your local frontend
