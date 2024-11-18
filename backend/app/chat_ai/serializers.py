@@ -14,20 +14,17 @@ class TalesSerializer(serializers.ModelSerializer):
         }
 
     def create(self, validated_data):
-        text = validated_data.get('text')
-        generated_story = sent_prompt_and_get_response(text)
-        validated_data['text'] = generated_story
+        try:
+            text = validated_data.get('text')
+            generated_story = sent_prompt_and_get_response(text)
+            validated_data['text'] = generated_story
 
-        user = self.context['request'].user
+            user = self.context['request'].user
+            validated_data['user'] = user if not user.is_anonymous else None
 
-        # Для анонимных пользователей сохраняем сказку без привязки к пользователю
-        if user.is_anonymous:
-            validated_data['user'] = None
-        else:
-            validated_data['user'] = user
-
-        # Создаем объект модели
-        return super().create(validated_data)
+            return super().create(validated_data)
+        except Exception as e:
+            raise serializers.ValidationError({"detail": f"Ошибка при создании сказки: {str(e)}"})
 
 
 class TopTalesSerializer(serializers.ModelSerializer):
