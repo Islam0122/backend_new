@@ -19,8 +19,18 @@ class TopTalesDetailView(RetrieveAPIView):
     permission_classes = [AllowAny]
 
 
-class TalesModelViewSet(ModelViewSet):
+class TalesViewSet(ModelViewSet):
     queryset = Tales.objects.all()
     serializer_class = TalesSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [AllowAny]  # Разрешаем доступ всем
 
+    def perform_create(self, serializer):
+        """
+        Обрабатываем создание объекта.
+        Если пользователь анонимный, поле `user` остается пустым.
+        """
+        user = self.request.user
+        if user.is_authenticated:
+            serializer.save(user=user)  # Привязываем пользователя
+        else:
+            serializer.save()
