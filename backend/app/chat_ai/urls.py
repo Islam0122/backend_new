@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from .views import *
 
 router = DefaultRouter()
-router.register(r'', TalesModelViewSet, basename='tales')
+router.register(r'', TalesViewSet, basename='tales')
 
 urlpatterns = [
     path('', include(router.urls)),
