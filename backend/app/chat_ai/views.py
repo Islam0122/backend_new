@@ -28,10 +28,4 @@ class TalesViewSet(ModelViewSet):
     permission_classes = [AllowAny]  #Разрешаем доступ всем
 
 
-class CreateTaleView(APIView):
-    def post(self, request):
-        serializer = TalesSerializer(data=request.data, context={'request': request})
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
