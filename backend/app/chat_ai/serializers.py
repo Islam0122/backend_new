@@ -9,19 +9,22 @@ class TalesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tales
         fields = '__all__'
+        extra_kwargs = {
+            'user': {'required': False, 'allow_null': True}  # Поле необязательно
+        }
 
     def create(self, validated_data):
         text = validated_data.get('text')
         generated_story = sent_prompt_and_get_response(text)
         validated_data['text'] = generated_story
-        # Получаем пользователя из контекста
+
         user = self.context['request'].user
 
         # Для анонимных пользователей сохраняем сказку без привязки к пользователю
         if user.is_anonymous:
-            validated_data['user'] = None  # Не привязываем пользователя, если он аноним
+            validated_data['user'] = None
         else:
-            validated_data['user'] = user  # Если пользователь авторизован, сохраняем его
+            validated_data['user'] = user
 
         # Создаем объект модели
         return super().create(validated_data)
