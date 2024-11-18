@@ -21,7 +21,8 @@ class Base_Tales(models.Model):
         verbose_name='Пользователь',
         help_text='Пользователь, создавший сказку.',
         null=True,
-        blank=True
+        blank=True,
+        default=None
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
