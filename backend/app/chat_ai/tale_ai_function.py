@@ -63,7 +63,7 @@ def send_prompt(msg: str, access_token: str):
 
 def sent_prompt_and_get_response(msg: str):
     access_token = get_access_token()
-    message = f"Ответь на вопрос: {msg}"
+    message = f"вопрос: {msg}"
 
     if access_token:
         response = send_prompt(message, access_token)
