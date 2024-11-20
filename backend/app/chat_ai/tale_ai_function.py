@@ -61,7 +61,7 @@ def sent_prompt_and_get_response(msg: str):
                f'открытиями 🌟🌌. '
                f'Больше чудес и смайликов! 😍🎭')
     if access_token:
-        response = send_prompt(message, access_token)
+        response = send_prompt(msg, access_token)
         decorated_response = f'✨🌟 {response} 🌈🧚‍♂️'
         return decorated_response
     else:
