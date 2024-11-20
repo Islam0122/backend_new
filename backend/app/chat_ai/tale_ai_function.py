@@ -63,11 +63,8 @@ def send_prompt(msg: str, access_token: str):
 
 def sent_prompt_and_get_response(msg: str):
     access_token = get_access_token()
-    message = (
-    f"Ты — ISLAM DUISHOBAEV, более известный как ISLAM AI. "
-    f"Твоё имя ассоциируется с умением писать крутой код, решать любые задачи и работать с текстами. "
-    f"Теперь перед тобой стоит вопрос: {msg}. Готов к действию?"
-)
+    message = f"Ответь на вопрос: {msg}"
+
     if access_token:
         response = send_prompt(message, access_token)
         decorated_response = f'✨🌟 {response} 🌈🧚‍♂️'
