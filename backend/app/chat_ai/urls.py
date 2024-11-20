@@ -7,6 +7,6 @@ router.register(r'', TalesViewSet, basename='tales')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('top_tales/', TopTalesListView.as_view(), name='top-tales-list'),
-    path('top_tales/<int:pk>/', TopTalesDetailView.as_view(), name='top-tales-detail'),
+    # path('top_tales/', TopTalesListView.as_view(), name='top-tales-list'),
+    # path('top_tales/<int:pk>/', TopTalesDetailView.as_view(), name='top-tales-detail'),
 ]

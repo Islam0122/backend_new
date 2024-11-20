@@ -8,7 +8,7 @@ from .drf_yasg import urlpatterns as urls_swagger
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('api/v1/', include('app.main.urls')),
-                  path('api/v1/tales/', include('app.chat_ai.urls')),
+                  path('api/v1/chat/', include('app.chat_ai.urls')),
                   # path('register/', RegisterAPIView.as_view(), name='register'),
                   # path('login/', LoginAPIView.as_view(), name='login'),
                   path('api/v1/user/', include('rest_framework.urls')),
