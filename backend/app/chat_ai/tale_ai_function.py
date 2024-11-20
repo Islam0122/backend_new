@@ -64,22 +64,16 @@ def send_prompt(msg: str, access_token: str):
         return "Ошибка при получении ответа от GigaChat."
 
 
-def sent_prompt_and_get_response(msg: str, language: str):
+def sent_prompt_and_get_response(msg: str):
     access_token = get_access_token()
 
     # Создаем сообщение в зависимости от языка
-    messages = {
-        "ru": f'✨🌈 Придумай необычную, уникальную сказку о {msg} 🧚‍♀️🦄! Пусть это будет история, где царства превращаются в нечто удивительное, а герои сталкиваются с необычными событиями и открытиями 🌟🌌. Больше чудес и смайликов! 😍🎭',
-        "en": f'✨🌈 Create an extraordinary, unique fairy tale about {msg} 🧚‍♀️🦄! Let it be a story where kingdoms turn into something marvelous, and heroes face unusual events and discoveries 🌟🌌. Add more wonders and emojis! 😍🎭'
-    }
+    messages = f'✨🌈 Придумай необычную, уникальную сказку о {msg} 🧚‍♀️🦄! Пусть это будет история, где царства превращаются в нечто удивительное, а герои сталкиваются с необычными событиями и открытиями 🌟🌌.Больше чудес и смайликов! 😍🎭',
 
-    # Получаем сообщение в зависимости от языка, по умолчанию используется русский
-    message = messages.get(language, messages["ru"])
 
-    # Проверка наличия access token
     if access_token:
         # Получаем ответ от send_prompt и добавляем смайлики
-        response = send_prompt(message, access_token)
+        response = send_prompt(messages, access_token)
         decorated_response = f'✨🌟 {response} 🌈🧚‍♂️'
         return decorated_response
     else:
