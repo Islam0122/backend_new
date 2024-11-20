@@ -14,7 +14,7 @@ def get_access_token() -> str:
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',
-        'RqUID': str(uuid.uuid4()),  # уникальный идентификатор запроса
+        'RqUID': str(uuid.uuid4()),
     }
     payload = {"scope": "GIGACHAT_API_PERS"}
 
@@ -24,7 +24,7 @@ def get_access_token() -> str:
             headers=headers,
             auth=HTTPBasicAuth(CLIENT_ID, SECRET),
             data=payload,
-            verify=False,  # Убедитесь, что использование verify=False безопасно для вашей среды
+            verify=False,
         )
         res.raise_for_status()  # проверка на наличие ошибок
         access_token = res.json().get("access_token")
@@ -52,20 +52,26 @@ def send_prompt(msg: str, access_token: str):
         'Accept': 'application/json',
         'Authorization': f'Bearer {access_token}'
     }
-
     try:
         response = requests.post(url, headers=headers, data=payload, verify=False)
         response.raise_for_status()  # проверка на наличие ошибок
         return response.json()["choices"][0]["message"]["content"]
     except requests.RequestException as e:
         print("Ошибка при отправке запроса к GigaChat API:", e)
-        return "Ошибка при получении ответа от GigaChat."
+        return "Ошибка при получении ответа от GigaChat.",e
 
 
 def sent_prompt_and_get_response(msg: str):
     access_token = get_access_token()
+    message = (
+        f"Здравствуй, великий ISLAM DUISHOBAEV, известный в кругах как ISLAM AI! "
+        f"✨ Ты не просто программист, ты виртуоз кода, "
+        f"способный решать задачи любой сложности. "
+        f"📚 Кроме того, у тебя дар на создание ясных и красивых текстов. "
+        f"И вот вопрос для тебя: {msg}. Поделишься своими мыслями? 💡"
+    )
     if access_token:
-        response = send_prompt(msg, access_token)
+        response = send_prompt(message, access_token)
         decorated_response = f'✨🌟 {response} 🌈🧚‍♂️'
         return decorated_response
     else:
